@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     # Cors
     'corsheaders',
+    # celery
+    'django_celery_beat',
+    'django_celery_results',
     # your apps
     'base.apps.BaseConfig',
 ]
@@ -167,3 +170,12 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = str(BASE_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
+
+
+# Celery settings
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
