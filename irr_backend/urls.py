@@ -27,3 +27,7 @@ urlpatterns = [
 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+]
